@@ -49,5 +49,11 @@
             PostalCode = postalCode;
             FormattedAddress = formattedAddress;
         }
+        
+        public AddressCustomField(
+            string value)
+        {
+            Value = value;
+        }
     }
 }
