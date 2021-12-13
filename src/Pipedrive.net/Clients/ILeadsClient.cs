@@ -14,5 +14,7 @@ namespace Pipedrive
         Task<IReadOnlyList<Lead>> GetAll(LeadFilters filters);
 
         Task<Lead> Get(Guid id);
+        
+        Task<Lead> Create(NewLead data);
     }
 }

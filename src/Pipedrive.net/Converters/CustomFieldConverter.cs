@@ -167,6 +167,8 @@ namespace Pipedrive.Internal
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            
+            
             var contract = (JsonObjectContract)serializer
                 .ContractResolver
                 .ResolveContract(value.GetType());
@@ -181,6 +183,11 @@ namespace Pipedrive.Internal
                 var property_name = property.PropertyName;
                 var property_value = property.ValueProvider.GetValue(value);
 
+                if (value.GetType() == typeof(NewLead) && property_value == null)
+                {
+                    continue;
+                }
+                
                 writer.WritePropertyName(property_name);
                 if (property.Converter != null && property.Converter.CanWrite)
                 {
