@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Pipedrive.Helpers;
+using Pipedrive.Models.Request.LeadLabel;
 
 namespace Pipedrive
 {
@@ -21,6 +23,13 @@ namespace Pipedrive
         public Task<IReadOnlyList<LeadLabel>> GetAll()
         {
             return ApiConnection.GetAll<LeadLabel>(ApiUrls.LeadLabels());
+        }
+        
+        public Task<LeadLabel> Create(NewLeadLabel data)
+        {
+            Ensure.ArgumentNotNull(data, nameof(data));
+
+            return ApiConnection.Post<LeadLabel>(ApiUrls.LeadLabels(), data);
         }
     }
 }

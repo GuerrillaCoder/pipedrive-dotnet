@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Pipedrive.Models.Request.LeadLabel;
 
 namespace Pipedrive
 {
@@ -11,5 +12,6 @@ namespace Pipedrive
     public interface ILeadLabelsClient
     {
         Task<IReadOnlyList<LeadLabel>> GetAll();
+        Task<LeadLabel> Create(NewLeadLabel data);
     }
 }

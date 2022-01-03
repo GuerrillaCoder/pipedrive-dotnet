@@ -325,6 +325,15 @@ namespace Pipedrive
         /// Returns the <see cref="Uri"/> for the specified lead.
         /// </summary>
         /// <param name="id">The id of the lead</param>
+        public static Uri Lead(string id)
+        {
+            return new Uri($"{_leadsUrl}/{id}", UriKind.Relative);
+        }
+        
+        /// <summary>
+        /// Returns the <see cref="Uri"/> for the specified lead.
+        /// </summary>
+        /// <param name="id">The id of the lead</param>
         public static Uri Lead(Guid id)
         {
             return new Uri($"{_leadsUrl}/{id}", UriKind.Relative);

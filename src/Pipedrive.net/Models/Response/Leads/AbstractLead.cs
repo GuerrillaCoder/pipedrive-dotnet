@@ -18,7 +18,7 @@ namespace Pipedrive
         public long CreatorId { get; set; }
 
         [JsonProperty("label_ids")]
-        public List<Guid> LabelIds { get; set; }
+        public List<string> LabelIds { get; set; }
 
         public CurrencyAmount Value { get; set; }
 
@@ -50,5 +50,9 @@ namespace Pipedrive
 
         [JsonProperty("update_time")]
         public DateTime? UpdateTime { get; set; }
+        
+        [JsonConverter(typeof(LeadVisibilityConverter))]
+        [JsonProperty("visible_to")]
+        public Visibility VisibleTo { get; set; } = Visibility.shared;
     }
 }

@@ -389,6 +389,24 @@ namespace Pipedrive
 
             return response.Body.Data;
         }
+        
+        /// <summary>
+        /// Updates resource at Uri.
+        /// </summary>
+        /// <typeparam name="T">The API resource's type.</typeparam>
+        /// <param name="uri">URI of the API resource to update</param>
+        /// <param name="data">Object that describes the API resource; this will be serialized and used as the request's body</param>
+        /// <returns>The updated API resource.</returns>
+        /// <exception cref="ApiException">Thrown when an API error occurs.</exception>
+        public async Task<T> Patch<T>(Uri uri, object data)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
+            Ensure.ArgumentNotNull(data, nameof(data));
+
+            var response = await Connection.Patch<JsonResponse<T>>(uri, data).ConfigureAwait(false);
+
+            return response.Body.Data;
+        }
 
         /// <summary>
         /// Deletes the API object at the specified URI.

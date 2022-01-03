@@ -277,6 +277,16 @@ namespace Pipedrive
         /// <returns>The created API resource.</returns>
         /// <exception cref="ApiException">Thrown when an API error occurs.</exception>
         Task<T> Put<T>(Uri uri, object data);
+        
+        /// <summary>
+        /// Updates the API resource at the specified URI.
+        /// </summary>
+        /// <typeparam name="T">The API resource's type.</typeparam>
+        /// <param name="uri">URI of the API resource to create or replace</param>
+        /// <param name="data">Object that describes the API resource; this will be serialized and used as the request's body</param>
+        /// <returns>The created API resource.</returns>
+        /// <exception cref="ApiException">Thrown when an API error occurs.</exception>
+        Task<T> Patch<T>(Uri uri, object data);
 
         /// <summary>
         /// Deletes the API object at the specified URI.

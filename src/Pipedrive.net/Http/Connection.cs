@@ -197,6 +197,11 @@ namespace Pipedrive
         {
             return SendData<T>(uri, HttpMethod.Put, body, null, null, CancellationToken.None);
         }
+        
+        public Task<IApiResponse<T>> Patch<T>(Uri uri, object body)
+        {
+            return SendData<T>(uri, new HttpMethod("PATCH"), body, null, null, CancellationToken.None);
+        }
 
         Task<IApiResponse<T>> SendData<T>(
             Uri uri,

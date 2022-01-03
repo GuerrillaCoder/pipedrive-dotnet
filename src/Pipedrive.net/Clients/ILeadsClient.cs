@@ -16,5 +16,7 @@ namespace Pipedrive
         Task<Lead> Get(Guid id);
         
         Task<Lead> Create(NewLead data);
+
+        Task<Lead> Edit(string id, LeadUpdate data);
     }
 }
