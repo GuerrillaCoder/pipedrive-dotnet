@@ -183,7 +183,15 @@ namespace Pipedrive.Internal
                 var property_name = property.PropertyName;
                 var property_value = property.ValueProvider.GetValue(value);
 
-                if (value.GetType() == typeof(NewLead) && property_value == null)
+                var dataType = value.GetType();
+                
+                //some endpoints want it as number some as string
+                if (property_name == "visible_to" && dataType == typeof(OrganizationUpdate))
+                {
+                    property_value = $"{(int)property_value}";
+                }
+                
+                if (dataType == typeof(NewLead) && property_value == null)
                 {
                     continue;
                 }

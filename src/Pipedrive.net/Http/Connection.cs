@@ -440,6 +440,7 @@ namespace Pipedrive
         {
             request.Headers.Add("User-Agent", UserAgent);
             await _authenticator.Apply(request).ConfigureAwait(false);
+            
             var response = await _httpClient.Send(request, cancellationToken).ConfigureAwait(false);
             if (response != null)
             {
